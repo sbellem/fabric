@@ -24,5 +24,4 @@ services:
 
 before_script: make gotool.ginkgo ccenv docker-thirdparty
 
-#script:  ginkgo -keepGoing --slowSpecThreshold 60 -r integration/e2e/
-script: ls -al /home/travis/gopath/src/github.com/hyperledger/fabric
+script:  ginkgo -v -keepGoing --slowSpecThreshold 60 -r integration/e2e/
