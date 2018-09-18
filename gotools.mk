@@ -35,7 +35,10 @@ gotool.protoc-gen-go:
 # Special override for ginkgo since we want to use the version vendored with the project
 gotool.ginkgo:
 	@echo "Building github.com/onsi/ginkgo/ginkgo -> ginkgo"
+	@echo $(GOTOOLS_GOPATH)
+	@echo $(GOTOOLS_BINDIR)
 	@mkdir -p $(GOTOOLS_GOPATH)/src/github.com/onsi/ginkgo/ginkgo/
+	@ls $(GOTOOLS_GOPATH)/src/github.com/onsi/ginkgo/ginkgo/
 	@cp -R $(GOPATH)/src/github.com/hyperledger/fabric/vendor/github.com/onsi/ginkgo/* $(GOTOOLS_GOPATH)/src/github.com/onsi/ginkgo
 	@GOPATH=$(abspath $(GOTOOLS_GOPATH)) GOBIN=$(abspath $(GOTOOLS_BINDIR)) go install github.com/onsi/ginkgo/ginkgo
 
