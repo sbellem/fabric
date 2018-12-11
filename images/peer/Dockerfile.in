@@ -7,4 +7,14 @@ ENV FABRIC_CFG_PATH /etc/hyperledger/fabric
 RUN mkdir -p /var/hyperledger/production $FABRIC_CFG_PATH
 COPY payload/peer /usr/local/bin
 ADD  payload/sampleconfig.tar.bz2 $FABRIC_CFG_PATH
+
+##############################################################################
+# BEGIN: Python HoneyBadgerMPC dependencies                                  #
+RUN apt update && apt install -y git python3-pip libgmp-dev
+# TODO change branch to hyperbadgermpc
+RUN pip3 install -U pip
+RUN pip3 install git+https://github.com/initc3/HoneyBadgerMPC.git@dev
+# END: Python HoneyBadgerMPC dependencies                                    #
+##############################################################################
+
 CMD ["peer","node","start"]
